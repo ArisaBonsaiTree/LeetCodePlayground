@@ -50,14 +50,12 @@ public class NumberOfIslands {
                 {0,0,0,0,0,1},
         };
 
-        int numberOfRows = islands.length;
-        int numberOfCols = islands[0].length;
         int numOfIslands = 0;
 
         for(int row = 0; row < islands.length; row++){
             for(int col = 0; col < islands[0].length; col++){
                 if(islands[row][col] == 1){
-                    bfs(islands, row, col, numberOfCols, numberOfRows);
+                    bfs(islands, row, col);
                     numOfIslands++;
                 }
 
@@ -67,9 +65,9 @@ public class NumberOfIslands {
 
         System.out.println(numOfIslands);
     }
-    private void bfs(int[][] island, int row, int col, int numberOfCols, int numberOfRows){
+    private void bfs(int[][] island, int row, int col){
         Queue<Integer> q = new LinkedList<>();
-        int converted = (row * numberOfCols) + col;
+        int converted = (row * island[0].length) + col;
         q.add(converted);
 
         while(!q.isEmpty()){
@@ -77,27 +75,27 @@ public class NumberOfIslands {
             int number = q.poll();
 
             // Converted 0 into {0,0}
-            int r = number/numberOfCols;
-            int c = number % numberOfCols;
+            int r = number/island[0].length;
+            int c = number % island[0].length;
 
-            if(r + 1 < numberOfRows && island[r+1][c] == 1){
-                q.add(((r+1) * numberOfCols) + c);
+            if(r + 1 < island.length && island[r+1][c] == 1){
+                q.add(((r+1) * island[0].length) + c);
 
                 island[r+1][c] = 0;
             }
 
-            if(c + 1 < numberOfCols && island[r][c + 1] == 1){
-                q.add(((r) * numberOfCols) + c + 1);
+            if(c + 1 < island[0].length && island[r][c + 1] == 1){
+                q.add(((r) * island[0].length) + c + 1);
                 island[r][c + 1] = 0;
             }
 
             if(r - 1 >= 0 && island[r - 1][c] == 1){
-                q.add(((r - 1) * numberOfCols) + c);
+                q.add(((r - 1) * island[0].length) + c);
                 island[r - 1][c] = 0;
             }
 
             if(c - 1 >= 0 && island[r][c - 1] == 1){
-                q.add(((r) * numberOfCols) + c - 1);
+                q.add(((r) * island[0].length) + c - 1);
                 island[r][c - 1] = 0;
             }
         }
