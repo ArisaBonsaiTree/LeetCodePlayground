@@ -34,7 +34,6 @@ public class BacktrackingProject {
             comb.add(candidates[i]);
             backtrack(list, comb, i, candidates, target, sum += candidates[i]);
             comb.removeLast();
-            System.out.println("===========");
         }
 
     }
