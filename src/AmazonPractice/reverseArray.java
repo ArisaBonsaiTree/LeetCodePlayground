@@ -28,8 +28,8 @@ public class reverseArray {
             Integer j = operation.get(1);
             System.out.println(j);
 
-            List<Integer> subList = arr.subList(i,j+1);
-            Collections.reverse(subList);
+            List<Integer> sub = arr.subList(i,j+1);
+            Collections.reverse(sub);
         }
 
 
