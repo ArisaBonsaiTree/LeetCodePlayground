@@ -13,6 +13,13 @@ public class GroupSort {
 
         HashMap<Integer, Integer> freq = new HashMap<>();
 
+
+        List<Integer>[] bucket = new List[5];
+        bucket[0] = new ArrayList<>();
+        bucket[0].add(5);
+
+        System.out.println(bucket[0]);
+
         // Place into a HashMap
         for(int i: arr){
             freq.put(i, freq.getOrDefault(i, 0) + 1);
